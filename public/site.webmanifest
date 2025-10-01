@@ -1,0 +1,30 @@
+{
+  "name": "Rueda Ya! - Plataforma de Vehículos Ecuador",
+  "short_name": "Rueda Ya!",
+  "description": "La plataforma líder de vehículos en Ecuador. Encuentra tu auto ideal entre miles de opciones de concesionarios verificados.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1341ee",
+  "orientation": "portrait-primary",
+  "categories": ["automotive", "shopping"],
+  "lang": "es",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/ruedayafavico.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/ruedayafavico.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/ruedayafavico.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

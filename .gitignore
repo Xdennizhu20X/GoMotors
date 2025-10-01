@@ -1,0 +1,88 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+bun.lockb
+
+CLAUDE.md
+API.md
+
+2025-09-05-hola-recuerdas-lo-que-emos-trabajado.txt
+BACKEND-STRUCTURE.md
+API-ENDPOINTS-REFERENCE.md
+
+.claude
+.claude/settings.local.json
+components/vehicle-purchase.tsx.backup
+C:\Users\Dennishu\Documents\Trabajo\tikee\Ruedaya\ruedaya\docs
+
+.env.example
+docs/CLOUDINARY_SETUP.md
+.claude/settings.local.json
+
+# Configuración local
+.claude/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Documentación privada
+docs/CLOUDINARY_SETUP.md
+API-PURCHASE-DOCUMENTATION.md
+docs/CLOUDINARY_SETUP.md
+test-analytics.html
+public/robots.txt
+DEVELOPMENT_SETUP.md
+DEALER_IMPLEMENTATION.md
+VERCEL_SUBDOMAIN_SETUP.md
+LOCAL_SUBDOMAIN_SETUP.md
+DEALER-DEPLOYMENT-PLAN.md
+.env.local.example
+ALL_VARIABLES.json
+API_IMPLEMENTATION_EXAMPLE.md
+API_SCHEMA.md
+CUSTOMIZATION_SYSTEM.md
+CUSTOMIZATION.md
+DEPLOY.md
+deployment-config.example.json
+deployment-config.json
+deployment-config.json
+deployment-config.json
+deployment-config.json

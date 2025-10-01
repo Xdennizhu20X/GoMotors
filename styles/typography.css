@@ -1,0 +1,87 @@
+/* Typography Global Classes */
+
+/* Headings - RechargeRg-Bold */
+h1, .text-h1 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+h2, .text-h2 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+h3, .text-h3 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+h4, .text-h4 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+h5, .text-h5 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+h6, .text-h6 {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+/* Display Text - TitlingGothicFB Wide */
+.text-display, .font-black, .font-bold {
+  font-family: var(--font-display), var(--font-sans);
+}
+
+/* Brand titles and hero text */
+.hero-title, .brand-title {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+/* Navigation and UI elements that need emphasis */
+.nav-title, .card-title, .section-title {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+/* Button text emphasis */
+.btn-text, button {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: 600;
+}
+
+/* Price and important numbers */
+.price-text, .number-emphasis {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: 900;
+}
+
+/* Utility classes for manual application */
+.font-heading {
+  font-family: var(--font-heading), var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans);
+}
+
+/* Override Tailwind's font-black and font-bold */
+.font-black {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: 900;
+}
+
+.font-bold {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: bold;
+}
+
+.font-semibold {
+  font-family: var(--font-heading), var(--font-sans);
+  font-weight: 600;
+}

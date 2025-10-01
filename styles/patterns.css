@@ -1,0 +1,173 @@
+/* Global Variables for Premium Styling */
+:root {
+  --logo-shadow-color: rgba(0, 86, 255, 0.3);
+  --brand-blue: #0056FF;
+  --brand-blue-rgb: 0, 86, 255;
+  --pattern-primary: rgba(19, 65, 238, 0.03);
+  --pattern-secondary: rgba(147, 51, 234, 0.02);
+}
+
+[data-theme="dark"] {
+  --logo-shadow-color: rgba(110, 168, 255, 0.4);
+  --pattern-primary: rgba(110, 168, 255, 0.05);
+  --pattern-secondary: rgba(196, 181, 253, 0.03);
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.dark body {
+  background-color: #000;
+}
+
+/* Original Grid Patterns */
+.light-grid-pattern {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark-grid-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Premium Background Patterns */
+.premium-grid-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--pattern-primary) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.4;
+}
+
+.premium-dot-pattern {
+  background-image: 
+    radial-gradient(circle at 2px 2px, var(--pattern-primary) 1px, transparent 0);
+  background-size: 60px 60px;
+  opacity: 0.3;
+}
+
+.premium-diagonal-pattern {
+  background-image: 
+    linear-gradient(45deg, var(--pattern-primary) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--pattern-primary) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, var(--pattern-secondary) 75%), 
+    linear-gradient(-45deg, transparent 75%, var(--pattern-secondary) 75%);
+  background-size: 80px 80px;
+  background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+  opacity: 0.2;
+}
+
+.premium-hexagon-pattern {
+  background-image: 
+    radial-gradient(circle farthest-side at 0% 50%, var(--pattern-primary) 23.5%, transparent 0),
+    radial-gradient(circle farthest-side at 0% 50%, var(--pattern-secondary) 23.5%, transparent 0);
+  background-size: 80px 140px;
+  background-position: 0 0, 40px 70px;
+  opacity: 0.15;
+}
+
+/* Glassmorphism Effects */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Card Gradients */
+.premium-card-gradient {
+  background: linear-gradient(
+    135deg, 
+    rgba(var(--brand-blue-rgb), 0.08) 0%, 
+    rgba(147, 51, 234, 0.04) 50%, 
+    rgba(var(--brand-blue-rgb), 0.08) 100%
+  );
+}
+
+/* Animated Background Orbs */
+.floating-orb {
+  background: radial-gradient(circle at 30% 30%, rgba(var(--brand-blue-rgb), 0.3), transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-orb-secondary {
+  background: radial-gradient(circle at 70% 70%, rgba(147, 51, 234, 0.2), transparent 70%);
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 0.8;
+  }
+}
+
+/* Premium Shadow Effects */
+.premium-shadow-sm {
+  box-shadow: 
+    0 2px 4px rgba(var(--brand-blue-rgb), 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.premium-shadow-md {
+  box-shadow: 
+    0 4px 6px rgba(var(--brand-blue-rgb), 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.premium-shadow-lg {
+  box-shadow: 
+    0 10px 25px rgba(var(--brand-blue-rgb), 0.2),
+    0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.premium-shadow-xl {
+  box-shadow: 
+    0 25px 50px rgba(var(--brand-blue-rgb), 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Text Gradient Effects */
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--brand-blue) 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button Enhancement Effects */
+.premium-button-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-button-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.premium-button-glow:hover::before {
+  left: 100%;
+}

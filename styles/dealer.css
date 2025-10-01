@@ -1,0 +1,207 @@
+/* Dealer-specific styles */
+
+/* Dynamic color variables for dealer themes */
+[data-dealer-theme] {
+  --dealer-primary: #1341ee;
+  --dealer-primary-hover: #0f2cc4;
+  --dealer-primary-light: #1341ee33;
+  --dealer-primary-lighter: #1341ee1a;
+}
+
+/* Apply dealer primary color to various components */
+[data-dealer-theme] .dealer-primary {
+  color: var(--dealer-primary) !important;
+}
+
+[data-dealer-theme] .dealer-primary-bg {
+  background-color: var(--dealer-primary) !important;
+}
+
+[data-dealer-theme] .dealer-primary-border {
+  border-color: var(--dealer-primary) !important;
+}
+
+/* Button hover effects with dealer colors */
+[data-dealer-theme] .dealer-btn-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-btn-hover:hover {
+  background-color: var(--dealer-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--dealer-primary-light);
+}
+
+/* Navigation link hover effects */
+[data-dealer-theme] .dealer-nav-link {
+  transition: color 0.2s ease-in-out;
+  position: relative;
+}
+
+[data-dealer-theme] .dealer-nav-link:hover {
+  color: var(--dealer-primary) !important;
+}
+
+[data-dealer-theme] .dealer-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--dealer-primary);
+  transition: width 0.2s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Form elements with dealer colors */
+[data-dealer-theme] .dealer-select:focus-within {
+  border-color: var(--dealer-primary) !important;
+  box-shadow: 0 0 0 3px var(--dealer-primary-lighter) !important;
+}
+
+[data-dealer-theme] .dealer-input:focus {
+  border-color: var(--dealer-primary) !important;
+  box-shadow: 0 0 0 3px var(--dealer-primary-lighter) !important;
+}
+
+/* Loading spinner with dealer colors */
+[data-dealer-theme] .dealer-spinner {
+  border-color: transparent transparent var(--dealer-primary) var(--dealer-primary) !important;
+}
+
+/* Card hover effects */
+[data-dealer-theme] .dealer-card-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px var(--dealer-primary-light);
+}
+
+/* Gradient overlays with dealer colors */
+[data-dealer-theme] .dealer-gradient-overlay::before {
+  background: radial-gradient(circle at 30% 20%, var(--dealer-primary-lighter), transparent 60%);
+}
+
+[data-dealer-theme] .dealer-gradient-overlay::after {
+  background: radial-gradient(circle at 70% 80%, var(--dealer-primary-light), transparent 50%);
+}
+
+/* Text gradient effects */
+[data-dealer-theme] .dealer-text-gradient {
+  background: linear-gradient(135deg, var(--dealer-primary), var(--dealer-primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating animation elements */
+[data-dealer-theme] .dealer-floating-1 {
+  background-color: var(--dealer-primary-lighter) !important;
+}
+
+[data-dealer-theme] .dealer-floating-2 {
+  background-color: var(--dealer-primary-light) !important;
+}
+
+/* Social media icon hover effects */
+[data-dealer-theme] .dealer-social-icon {
+  transition: color 0.2s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-social-icon:hover {
+  color: var(--dealer-primary) !important;
+}
+
+/* Heart/Wishlist icon styling */
+[data-dealer-theme] .dealer-wishlist-btn {
+  color: var(--dealer-primary);
+  border-color: var(--dealer-primary-light);
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-wishlist-btn:hover {
+  color: var(--dealer-primary) !important;
+  background-color: var(--dealer-primary-lighter) !important;
+  border-color: var(--dealer-primary) !important;
+}
+
+/* Clear filters button */
+[data-dealer-theme] .dealer-clear-filters {
+  transition: color 0.2s ease-in-out;
+}
+
+[data-dealer-theme] .dealer-clear-filters:hover {
+  color: var(--dealer-primary) !important;
+}
+
+/* HeroUI Select component customization */
+[data-dealer-theme] [data-slot="trigger"]:focus-within {
+  border-color: var(--dealer-primary) !important;
+}
+
+[data-dealer-theme] [data-slot="trigger"]:hover {
+  border-color: var(--dealer-primary) !important;
+}
+
+/* Dynamic color injection via CSS variables */
+.dealer-dynamic-color {
+  color: var(--dynamic-primary, #1341ee);
+}
+
+.dealer-dynamic-bg {
+  background-color: var(--dynamic-primary, #1341ee);
+}
+
+.dealer-dynamic-border {
+  border-color: var(--dynamic-primary, #1341ee);
+}
+
+.dealer-dynamic-hover:hover {
+  color: var(--dynamic-primary, #1341ee) !important;
+}
+
+.dealer-dynamic-bg-hover:hover {
+  background-color: var(--dynamic-primary, #1341ee) !important;
+}
+
+/* Floating elements with dynamic colors */
+.dealer-floating-1 {
+  background-color: rgba(from var(--dynamic-primary, #1341ee) r g b / 0.08) !important;
+}
+
+.dealer-floating-2 {
+  background-color: rgba(from var(--dynamic-primary, #1341ee) r g b / 0.06) !important;
+}
+
+/* Fallback for browsers that don't support rgba(from ...) */
+@supports not (background-color: rgba(from var(--dynamic-primary) r g b / 0.08)) {
+  .dealer-floating-1 {
+    background-color: rgba(19, 65, 238, 0.08) !important;
+  }
+
+  .dealer-floating-2 {
+    background-color: rgba(19, 65, 238, 0.06) !important;
+  }
+
+  [style*="--dynamic-primary: #"] .dealer-floating-1 {
+    opacity: 0.08;
+    background-color: var(--dynamic-primary) !important;
+  }
+
+  [style*="--dynamic-primary: #"] .dealer-floating-2 {
+    opacity: 0.06;
+    background-color: var(--dynamic-primary) !important;
+  }
+}
+
+/* Spinner with dynamic border color */
+.dealer-spinner {
+  border-color: transparent transparent var(--dynamic-primary, #1341ee) var(--dynamic-primary, #1341ee) !important;
+}

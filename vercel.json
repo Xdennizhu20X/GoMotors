@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!api|_next|static|favicon.ico).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<subdomain>.*)\\.ruedaya\\.com"
+        }
+      ],
+      "destination": "/dealer/$1"
+    }
+  ]
+}

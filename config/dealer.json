@@ -1,0 +1,396 @@
+{
+  "dealer": {
+    "name": "Example Dealer",
+    "brand": "Toyota",
+    "logoUrl": "https://cdn.example.com/logo.png",
+    "brandColor": "#CC0000",
+    "location": "Quito, Ecuador",
+    "phone": "+593 99 999 9999",
+    "email": "contacto@example.com",
+    "website": "https://example.com",
+    "address": "Av. Principal 123, Quito",
+    "workingHours": {
+      "monday": "09:00 - 18:00",
+      "tuesday": "09:00 - 18:00",
+      "wednesday": "09:00 - 18:00",
+      "thursday": "09:00 - 18:00",
+      "friday": "09:00 - 18:00",
+      "saturday": "09:00 - 14:00",
+      "sunday": "Cerrado"
+    },
+    "description": "Concesionario líder en vehículos Toyota en Quito"
+  },
+  "api": {
+    "baseUrl": "https://api.ruedaya.com",
+    "dealerId": "dealer-12345"
+  },
+  "theme": {
+    "colors": {
+      "primary": "#1341ee",
+      "primaryHover": "#0f35cc",
+      "primaryLight": "#5b7ff5",
+      "primaryDark": "#0a28aa",
+      "secondary": "#0A39ED",
+      "secondaryHover": "#082eb8",
+      "accent": "#FF6B00",
+      "accentHover": "#e05f00",
+      "backgroundLight": "#FFFFFF",
+      "backgroundDark": "#000000",
+      "foregroundLight": "#0F0F1F",
+      "foregroundDark": "#FFFFFF",
+      "content1Dark": "#111111",
+      "content2Dark": "#181818",
+      "content3Dark": "#222222",
+      "success": "#10b981",
+      "warning": "#f59e0b",
+      "error": "#ef4444",
+      "info": "#3b82f6"
+    },
+    "typography": {
+      "fontSans": "Inter, system-ui, sans-serif",
+      "fontHeading": "Recharge, Inter, sans-serif",
+      "fontDisplay": "Titling Gothic, Inter, sans-serif",
+      "fontMono": "Fira Code, monospace",
+      "fontSizeXs": "0.75rem",
+      "fontSizeSm": "0.875rem",
+      "fontSizeBase": "1rem",
+      "fontSizeLg": "1.125rem",
+      "fontSizeXl": "1.25rem",
+      "fontSize2xl": "1.5rem",
+      "fontSize3xl": "1.875rem",
+      "fontSize4xl": "2.25rem",
+      "fontSize5xl": "3rem"
+    },
+    "spacing": {
+      "radiusSm": "0.375rem",
+      "radiusMd": "0.5rem",
+      "radiusLg": "0.75rem",
+      "radiusXl": "1rem",
+      "radius2xl": "1.5rem",
+      "radius3xl": "1.75rem",
+      "radiusFull": "9999px",
+      "shadowSm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "shadowMd": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+      "shadowLg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+      "shadowXl": "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+      "shadow2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      "maxWidthXs": "20rem",
+      "maxWidthSm": "24rem",
+      "maxWidthMd": "28rem",
+      "maxWidthLg": "32rem",
+      "maxWidthXl": "36rem",
+      "maxWidth2xl": "42rem",
+      "maxWidth7xl": "80rem"
+    },
+    "animationEasing": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "containerPadding": "1rem",
+    "sectionSpacing": "4rem"
+  },
+  "images": {
+    "logo": "https://cdn.example.com/logo.png",
+    "logoWhite": "https://cdn.example.com/logo-white.png",
+    "logoDark": "https://cdn.example.com/logo-dark.png",
+    "favicon": "https://cdn.example.com/favicon.png",
+    "heroImage": "https://cdn.example.com/hero-car.png",
+    "heroImageAlt": "Vehículo Toyota en nuestro showroom",
+    "heroBackground": "https://cdn.example.com/hero-bg.jpg",
+    "aboutImage": "https://cdn.example.com/about.jpg",
+    "aboutImageAlt": "Nuestro equipo de trabajo",
+    "contactImage": "https://cdn.example.com/contact.jpg",
+    "contactImageAlt": "Contáctanos",
+    "ogImage": "https://cdn.example.com/og-image.jpg",
+    "twitterImage": "https://cdn.example.com/twitter-image.jpg",
+    "dealerBanner": "https://cdn.example.com/banner.jpg",
+    "dealerShowroom": "https://cdn.example.com/showroom.jpg",
+    "dealerTeam": "https://cdn.example.com/team.jpg",
+    "backgroundPattern": "",
+    "sectionDivider": "",
+    "featureIcons": {
+      "financing": "https://cdn.example.com/icon-financing.svg",
+      "warranty": "https://cdn.example.com/icon-warranty.svg",
+      "delivery": "https://cdn.example.com/icon-delivery.svg",
+      "support": "https://cdn.example.com/icon-support.svg"
+    }
+  },
+  "content": {
+    "siteName": "Example Dealer",
+    "tagline": "Tu concesionario de confianza",
+    "hero": {
+      "title": "Encuentra tu",
+      "titleHighlight": "Vehículo Perfecto",
+      "subtitle": "Explora nuestra selección",
+      "description": "Vehículos Toyota de la más alta calidad con garantía y financiamiento",
+      "ctaPrimary": "Ver Vehículos",
+      "ctaSecondary": "Contáctanos"
+    },
+    "features": {
+      "sectionTitle": "¿Por qué elegirnos?",
+      "sectionSubtitle": "Beneficios de comprar con nosotros",
+      "features": [
+        {
+          "title": "Financiamiento Flexible",
+          "description": "Planes de pago adaptados a tu presupuesto",
+          "icon": "financing"
+        },
+        {
+          "title": "Garantía Extendida",
+          "description": "Protege tu inversión con nuestra garantía completa",
+          "icon": "warranty"
+        },
+        {
+          "title": "Entrega a Domicilio",
+          "description": "Recibe tu vehículo donde quieras",
+          "icon": "delivery"
+        },
+        {
+          "title": "Soporte 24/7",
+          "description": "Estamos aquí para ayudarte siempre",
+          "icon": "support"
+        }
+      ]
+    },
+    "about": {
+      "sectionTitle": "Sobre Nosotros",
+      "sectionSubtitle": "Conoce nuestra historia",
+      "paragraphs": [
+        "Somos un concesionario con más de 15 años de experiencia en el mercado automotriz ecuatoriano.",
+        "Nos especializamos en vehículos Toyota, ofreciendo la mejor calidad y servicio al cliente.",
+        "Nuestro compromiso es ayudarte a encontrar el vehículo perfecto para ti y tu familia."
+      ],
+      "stats": [
+        {
+          "value": "15+",
+          "label": "Años de experiencia"
+        },
+        {
+          "value": "5000+",
+          "label": "Clientes satisfechos"
+        },
+        {
+          "value": "100+",
+          "label": "Vehículos en stock"
+        }
+      ]
+    },
+    "contact": {
+      "sectionTitle": "Contáctanos",
+      "sectionSubtitle": "Estamos aquí para ayudarte",
+      "formTitle": "¿Tienes alguna pregunta?",
+      "formSubtitle": "Envíanos un mensaje y te responderemos pronto",
+      "formFields": {
+        "namePlaceholder": "Nombre",
+        "emailPlaceholder": "Email",
+        "phonePlaceholder": "Teléfono",
+        "messagePlaceholder": "Mensaje",
+        "submitButton": "Enviar Mensaje"
+      },
+      "dealerRegistration": {
+        "title": "¿Eres un Concesionario?",
+        "subtitle": "Únete a nuestra plataforma",
+        "description": "Expande tu alcance y vende más con RuedaYa",
+        "benefits": [
+          "Mayor visibilidad en línea",
+          "Herramientas de gestión avanzadas",
+          "Acceso a miles de compradores"
+        ],
+        "ctaButton": "Registrar Concesionario"
+      }
+    },
+    "footer": {
+      "description": "Tu concesionario de confianza en Ecuador",
+      "sections": [
+        {
+          "title": "Empresa",
+          "links": [
+            {
+              "label": "Sobre Nosotros",
+              "href": "/about"
+            },
+            {
+              "label": "Contacto",
+              "href": "/contact"
+            },
+            {
+              "label": "Ubicación",
+              "href": "/location"
+            }
+          ]
+        },
+        {
+          "title": "Servicios",
+          "links": [
+            {
+              "label": "Vehículos",
+              "href": "/vehiculos"
+            },
+            {
+              "label": "Financiamiento",
+              "href": "/financiamiento"
+            },
+            {
+              "label": "Garantía",
+              "href": "/garantia"
+            }
+          ]
+        }
+      ],
+      "copyrightText": "© 2024 Example Dealer. Todos los derechos reservados.",
+      "socialLinks": {
+        "facebook": "https://facebook.com/example",
+        "instagram": "https://instagram.com/example",
+        "twitter": "https://twitter.com/example",
+        "linkedin": "",
+        "youtube": ""
+      }
+    },
+    "seo": {
+      "title": "Example Dealer - Toyota en Quito",
+      "titleTemplate": "%s | Example Dealer",
+      "description": "Concesionario líder en vehículos Toyota en Quito. Encuentra tu vehículo ideal con garantía y financiamiento.",
+      "keywords": [
+        "Toyota",
+        "vehículos",
+        "Quito",
+        "Ecuador",
+        "concesionario",
+        "autos"
+      ],
+      "author": "Example Dealer",
+      "twitterHandle": "@example_dealer"
+    },
+    "navigation": {
+      "items": [
+        {
+          "label": "Inicio",
+          "href": "/"
+        },
+        {
+          "label": "Vehículos",
+          "href": "/vehiculos"
+        },
+        {
+          "label": "Financiamiento",
+          "href": "/financiamiento"
+        },
+        {
+          "label": "Contacto",
+          "href": "/contacto"
+        }
+      ],
+      "ctaButton": {
+        "label": "Ver Catálogo",
+        "href": "/vehiculos"
+      }
+    }
+  },
+  "layout": {
+    "header": {
+      "position": "sticky",
+      "transparent": false,
+      "blur": true,
+      "shadow": true,
+      "logoPosition": "left",
+      "logoSize": "md",
+      "showLogoText": true,
+      "navPosition": "center",
+      "navStyle": "default",
+      "showSearchBar": false,
+      "showCtaButton": true,
+      "ctaStyle": "primary"
+    },
+    "hero": {
+      "layout": "split",
+      "imagePosition": "right",
+      "alignment": "left",
+      "backgroundType": "gradient",
+      "backgroundOverlay": false,
+      "backgroundBlur": false,
+      "height": "lg",
+      "minHeight": "600px",
+      "animateText": true,
+      "animateImage": true,
+      "animateButtons": true,
+      "showSubtitle": true,
+      "showDescription": true,
+      "showButtons": true,
+      "buttonLayout": "horizontal"
+    },
+    "features": {
+      "layout": "grid",
+      "columns": 4,
+      "gap": "md",
+      "cardStyle": "elevated",
+      "cardHoverEffect": "lift",
+      "iconPosition": "top",
+      "iconSize": "lg",
+      "iconStyle": "circle",
+      "animateOnScroll": true,
+      "staggerAnimation": true
+    },
+    "vehicleCatalog": {
+      "layout": "grid",
+      "columns": 3,
+      "cardsPerPage": 12,
+      "cardStyle": "modern",
+      "showQuickView": true,
+      "showCompareButton": true,
+      "showWishlistButton": true,
+      "filterPosition": "sidebar",
+      "filterStyle": "default",
+      "showSortOptions": true,
+      "imageRatio": "16:9",
+      "imageHoverEffect": "zoom",
+      "showImageCarousel": true
+    },
+    "footer": {
+      "layout": "modern",
+      "columns": 4,
+      "showNewsletter": true,
+      "showSocialLinks": true,
+      "showPaymentMethods": false,
+      "showTrustBadges": false,
+      "background": "dark",
+      "divider": true,
+      "copyrightPosition": "center",
+      "showBackToTop": true
+    },
+    "sidebar": {
+      "position": "left",
+      "width": "md",
+      "collapsible": true,
+      "defaultCollapsed": false,
+      "overlay": false,
+      "style": "default",
+      "blur": false
+    },
+    "animations": {
+      "enabled": true,
+      "speed": "normal",
+      "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "scrollAnimations": true,
+      "scrollOffset": 100,
+      "scrollThreshold": 0.3,
+      "pageTransitions": false,
+      "transitionType": "fade",
+      "hoverEffects": true,
+      "hoverScale": 1.05
+    },
+    "containerMaxWidth": "1280px",
+    "containerPadding": "1rem",
+    "sectionSpacing": "4rem",
+    "borderRadius": "0.75rem"
+  },
+  "seo": {
+    "title": "Example Dealer - Vehículos Toyota en Quito",
+    "description": "Encuentra los mejores vehículos Toyota en Quito. Example Dealer - Tu concesionario de confianza.",
+    "keywords": "Toyota, vehículos, Quito, concesionario, Example Dealer"
+  },
+  "social": {
+    "facebook": "https://facebook.com/example",
+    "instagram": "https://instagram.com/example",
+    "whatsapp": "+593999999999",
+    "twitter": "https://twitter.com/example",
+    "linkedin": "",
+    "youtube": ""
+  }
+}
