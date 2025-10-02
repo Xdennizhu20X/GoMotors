@@ -12,7 +12,7 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({
-  title = "Rueda Ya! - Plataforma de Vehículos Ecuador",
+  title = "GoMotors - Plataforma de Vehículos Ecuador",
   description = "La plataforma líder de vehículos en Ecuador. Encuentra tu auto ideal entre miles de opciones de concesionarios verificados. Compra, vende y financia vehículos de forma segura y confiable.",
   keywords = ["vehículos Ecuador", "autos Ecuador", "concesionarios Ecuador", "comprar auto", "vender auto"],
   ogImage = "/og-image.jpg",
@@ -22,7 +22,7 @@ export function SEOHead({
   noIndex = false
 }: SEOHeadProps) {
   const keywordsString = keywords.join(', ');
-  const fullTitle = title.includes('Rueda Ya!') ? title : `${title} | Rueda Ya!`;
+  const fullTitle = title.includes('GoMotors') ? title : `${title} | GoMotors`;
 
   return (
     <Head>
@@ -38,7 +38,7 @@ export function SEOHead({
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:locale" content="es_EC" />
-      <meta property="og:site_name" content="Rueda Ya!" />
+      <meta property="og:site_name" content="GoMotors" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -61,8 +61,8 @@ export function SEOHead({
       )}
 
       {/* Additional SEO tags */}
-      <meta name="author" content="Rueda Ya!" />
-      <meta name="publisher" content="Rueda Ya!" />
+      <meta name="author" content="GoMotors" />
+      <meta name="publisher" content="GoMotors" />
       <meta name="language" content="es" />
       <meta name="geo.region" content="EC" />
       <meta name="geo.country" content="Ecuador" />

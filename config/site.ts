@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Rueda Ya!",
+  name: "GoMotors",
   description: "La plataforma líder de vehículos en Ecuador. Encuentra tu auto ideal entre miles de opciones de concesionarios verificados. Compra, vende y financia vehículos de forma segura y confiable.",
   navItems: [
     {

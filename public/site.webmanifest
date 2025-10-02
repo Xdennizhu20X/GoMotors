@@ -1,6 +1,6 @@
 {
-  "name": "Rueda Ya! - Plataforma de Vehículos Ecuador",
-  "short_name": "Rueda Ya!",
+  "name": "GoMotors - Plataforma de Vehículos Ecuador",
+  "short_name": "GoMotors",
   "description": "La plataforma líder de vehículos en Ecuador. Encuentra tu auto ideal entre miles de opciones de concesionarios verificados.",
   "start_url": "/",
   "display": "standalone",
