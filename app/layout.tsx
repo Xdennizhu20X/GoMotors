@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     "Guayaquil",
     "Cuenca"
   ],
-  authors: [{ name: "Rueda Ya!" }],
-  creator: "Rueda Ya!",
-  publisher: "Rueda Ya!",
+  authors: [{ name: "GoMotors" }],
+  creator: "GoMotors",
+  publisher: "GoMotors",
   formatDetection: {
     email: false,
     address: false,
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/ruedayafavico.png",
-    shortcut: "/ruedayafavico.png",
-    apple: "/ruedayafavico.png",
+    icon: "/gomotorsfavico.png",
+    shortcut: "/gomotorsfavico.png",
+    apple: "/gomotorsfavico.png",
   },
   manifest: "/site.webmanifest",
 };

@@ -246,7 +246,7 @@ export default function DealerHome() {
                     >
                       <div className="text-center">
                         <div className="text-3xl font-black mb-1" style={{ color: primaryColor }}>
-                          {dealer?.brand || "Premium"}
+                          {"GoMotors"}
                         </div>
                         <div className="text-xs text-foreground/60 font-semibold uppercase">
                           Oficial
