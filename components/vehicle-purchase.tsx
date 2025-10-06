@@ -33,6 +33,12 @@ interface PaymentFormData {
   expiryYear: string
   expiryMonth: string
   securityCode: string
+
+  // Datos para financiamiento
+  monthlyIncome: string
+  workplace: string
+  jobTime: string
+  contractType: string
 }
 
 export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: VehiclePurchaseProps) => {
@@ -64,7 +70,11 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
     cardNumber: '',
     expiryYear: '',
     expiryMonth: '',
-    securityCode: ''
+    securityCode: '',
+    monthlyIncome: '',
+    workplace: '',
+    jobTime: '',
+    contractType: ''
   })
 
   // Prellenar formulario con datos del usuario cuando esté disponible
@@ -256,7 +266,11 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
         monthlyPayment: calculateMonthlyPayment(),
         interestRate: 8.5,
         totalInterest: (calculateMonthlyPayment() * loanTerms) - (vehicle.price - downPayment),
-        totalAmount: calculateMonthlyPayment() * loanTerms + downPayment
+        totalAmount: calculateMonthlyPayment() * loanTerms + downPayment,
+        monthlyIncome: formData.monthlyIncome,
+        workplace: formData.workplace,
+        jobTime: formData.jobTime,
+        contractType: formData.contractType
       } : undefined
 
       // Validar que tenemos IDs válidos antes de enviar
@@ -374,9 +388,27 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
       }
     }
 
-    if (paymentMethod === 'financing' && !selectedBank) {
-      setPurchaseError('Selecciona un banco para el financiamiento')
-      return false
+    if (paymentMethod === 'financing') {
+      if (!formData.monthlyIncome.trim()) {
+        setPurchaseError('Los ingresos mensuales son requeridos')
+        return false
+      }
+      if (!formData.workplace.trim()) {
+        setPurchaseError('El lugar de trabajo es requerido')
+        return false
+      }
+      if (!formData.jobTime.trim()) {
+        setPurchaseError('El tiempo en el trabajo actual es requerido')
+        return false
+      }
+      if (!formData.contractType.trim()) {
+        setPurchaseError('El tipo de contrato es requerido')
+        return false
+      }
+      if (!selectedBank) {
+        setPurchaseError('Selecciona un banco para el financiamiento')
+        return false
+      }
     }
 
     return true
@@ -437,6 +469,12 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
           bankDetails: {
             selectedBank,
             accountType: 'savings'
+          },
+          financialInfo: {
+            monthlyIncome: formData.monthlyIncome,
+            workplace: formData.workplace,
+            jobTime: formData.jobTime,
+            contractType: formData.contractType
           }
         }),
         savePaymentInfo: true,
@@ -806,7 +844,40 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
 
                   {paymentMethod === 'financing' && (
                     <div className="space-y-3">
-                      <h4 className="font-semibold">Banco para financiamiento</h4>
+                      <h4 className="font-semibold">Información de financiamiento</h4>
+                      <Input
+                        label="Ingresos mensuales (USD)"
+                        value={formData.monthlyIncome}
+                        onChange={(e) => handleInputChange('monthlyIncome', e.target.value)}
+                        type="number"
+                        isRequired
+                      />
+                      <Input
+                        label="Lugar de trabajo"
+                        value={formData.workplace}
+                        onChange={(e) => handleInputChange('workplace', e.target.value)}
+                        isRequired
+                      />
+                      <Input
+                        label="Tiempo en el trabajo actual"
+                        value={formData.jobTime}
+                        onChange={(e) => handleInputChange('jobTime', e.target.value)}
+                        placeholder="Ej: 2 años y 6 meses"
+                        isRequired
+                      />
+                      <Select
+                        label="Tipo de contrato"
+                        value={formData.contractType}
+                        onChange={(e) => handleInputChange('contractType', e.target.value)}
+                        isRequired
+                      >
+                        <SelectItem key="indefinido">Indefinido</SelectItem>
+                        <SelectItem key="temporal">Temporal</SelectItem>
+                        <SelectItem key="por-obra">Por obra o servicio</SelectItem>
+                        <SelectItem key="otro">Otro</SelectItem>
+                      </Select>
+
+                      <h4 className="font-semibold pt-4">Banco para financiamiento</h4>
                       <Select
                         label="Selecciona tu banco"
                         value={selectedBank}
