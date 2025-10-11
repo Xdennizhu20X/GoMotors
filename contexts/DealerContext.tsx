@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import apiClient from '@/lib/api-client';
 import { DealerConfig, DealerContext, DealerConfiguration } from '@/types/dealer';
+import cachedTheme from '@/config/dealer-theme.json';
 
 const DealerContextProvider = createContext<DealerContext | undefined>(undefined);
 
@@ -87,8 +88,42 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
           console.log('[DealerContext] Detected dealerId from hostname:', dealerId);
         }
 
-        // If we have a dealer ID, load the configuration
-        if (dealerId) {
+        // INSTANT LOAD: Use cached theme first (no API delay)
+        if (cachedTheme && cachedTheme.dealer) {
+          const dealerData = cachedTheme.dealer;
+          const config = cachedTheme;
+
+          // Merge dealer data with configuration
+          const completeDealer = {
+            ...dealerData,
+            configuration: {
+              theme: config.theme,
+              images: config.images,
+              content: config.content,
+              social: config.social,
+            }
+          };
+
+          setContext({
+            isDealer: true,
+            dealer: completeDealer,
+            slug: dealerId || dealerData._id,
+          });
+
+          // Apply theme to document IMMEDIATELY
+          applyThemeToDocument(completeDealer.configuration);
+
+          console.log('[DealerContext] ⚡ Instant theme loaded from cache');
+          setLoading(false);
+
+          // BACKGROUND REFRESH: Optionally fetch fresh data (non-blocking)
+          // This ensures theme stays updated without blocking initial render
+          if (dealerId) {
+            fetchFreshTheme(dealerId);
+          }
+        }
+        // FALLBACK: If no cached theme, fetch from API (legacy behavior)
+        else if (dealerId) {
           try {
             const response = await apiClient.getCompleteDealerConfiguration(dealerId);
             if (response.success && response.data) {
@@ -102,7 +137,6 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
                   theme: config.theme,
                   images: config.images,
                   content: config.content,
-                  layout: config.layout,
                   social: config.social,
                 }
               };
@@ -116,7 +150,7 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
               // Apply theme to document
               applyThemeToDocument(completeDealer.configuration);
 
-              console.log('[DealerContext] Dealer configuration loaded successfully:', dealerId);
+              console.log('[DealerContext] Dealer configuration loaded from API:', dealerId);
             } else {
               console.error('[DealerContext] Dealer not found:', dealerId);
               setContext({
@@ -133,6 +167,7 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
               slug: undefined,
             });
           }
+          setLoading(false);
         } else {
           console.warn('[DealerContext] No dealer ID found - set NEXT_PUBLIC_DEALER_ID env variable');
           setContext({
@@ -140,6 +175,7 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
             dealer: undefined,
             slug: undefined,
           });
+          setLoading(false);
         }
       } catch (error) {
         console.error('[DealerContext] Error initializing dealer context:', error);
@@ -148,8 +184,43 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
           dealer: undefined,
           slug: undefined,
         });
-      } finally {
         setLoading(false);
+      }
+    };
+
+    // Background theme refresh (non-blocking)
+    const fetchFreshTheme = async (dealerId: string) => {
+      try {
+        const response = await apiClient.getCompleteDealerConfiguration(dealerId);
+        if (response.success && response.data) {
+          const dealerData = response.data.dealer || response.data;
+          const config = response.data;
+
+          const completeDealer = {
+            ...dealerData,
+            configuration: {
+              theme: config.theme,
+              images: config.images,
+              content: config.content,
+              social: config.social,
+            }
+          };
+
+          // Update context with fresh data
+          setContext({
+            isDealer: true,
+            dealer: completeDealer,
+            slug: dealerId,
+          });
+
+          // Re-apply theme if it changed
+          applyThemeToDocument(completeDealer.configuration);
+
+          console.log('[DealerContext] 🔄 Theme refreshed from API (background)');
+        }
+      } catch (error) {
+        console.warn('[DealerContext] Background theme refresh failed (using cache):', error);
+        // Silent fail - we already have cached theme loaded
       }
     };
 

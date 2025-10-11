@@ -1,0 +1,56 @@
+{
+  "dealer": {
+    "_id": "placeholder-id",
+    "id": "placeholder-id",
+    "slug": "placeholder-dealer",
+    "name": "Example Dealer",
+    "displayName": "Example Dealer",
+    "logo": "https://cdn.example.com/logo.png",
+    "description": "Concesionario líder en vehículos",
+    "brand": "Toyota",
+    "email": "contacto@example.com",
+    "phone": "+593 99 999 9999",
+    "location": "Quito, Ecuador",
+    "address": "Av. Principal 123, Quito",
+    "isActive": true,
+    "createdAt": "2025-10-10T06:59:15.572Z",
+    "updatedAt": "2025-10-10T06:59:15.574Z"
+  },
+  "theme": {
+    "colors": {
+      "primary": "#CC0000",
+      "secondary": "#1a1a1a",
+      "accent": "#FFD700",
+      "success": "#10b981",
+      "warning": "#f59e0b",
+      "error": "#ef4444"
+    },
+    "typography": {
+      "fontSans": "Inter, system-ui, sans-serif",
+      "fontHeading": "Inter, system-ui, sans-serif",
+      "fontDisplay": "Inter, system-ui, sans-serif",
+      "fontMono": "Monaco, monospace"
+    }
+  },
+  "images": {
+    "logo": "https://cdn.example.com/logo.png",
+    "favicon": "https://cdn.example.com/favicon.png",
+    "hero": "https://cdn.example.com/hero.jpg"
+  },
+  "content": {
+    "siteName": "Example Dealer",
+    "siteDescription": "Encuentra los mejores vehículos en Ecuador",
+    "hero": {
+      "title": "Bienvenido a Example Dealer",
+      "subtitle": "Tu concesionario de confianza",
+      "description": "Encuentra los mejores vehículos en Ecuador",
+      "ctaPrimary": "Ver Inventario",
+      "ctaSecondary": "Contáctanos"
+    }
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "whatsapp": ""
+  }
+}

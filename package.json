@@ -6,6 +6,7 @@
   "keywords": ["Toyota", "concesionario", "Quito, Ecuador", "RuedaYa"],
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "node scripts/fetch-theme.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
