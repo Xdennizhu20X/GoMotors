@@ -1,56 +1,63 @@
 {
   "dealer": {
-    "_id": "placeholder-id",
-    "id": "placeholder-id",
-    "slug": "placeholder-dealer",
-    "name": "Example Dealer",
-    "displayName": "Example Dealer",
-    "logo": "https://cdn.example.com/logo.png",
-    "description": "Concesionario líder en vehículos",
-    "brand": "Toyota",
-    "email": "contacto@example.com",
-    "phone": "+593 99 999 9999",
-    "location": "Quito, Ecuador",
-    "address": "Av. Principal 123, Quito",
-    "isActive": true,
-    "createdAt": "2025-10-10T06:59:15.572Z",
-    "updatedAt": "2025-10-10T06:59:15.574Z"
+    "name": "GoMotors",
+    "brands": [
+      "Great Wall",
+      "SWM",
+      "Haval",
+      "DFSK",
+      "KYC"
+    ],
+    "logoUrl": "https://res.cloudinary.com/dwjcqk3pc/image/upload/v1758731229/marcas/ejlrl0dpb6ahtfm98e4l.png",
+    "brandColor": "#444446",
+    "location": "Loja",
+    "phone": "+593999454243",
+    "email": "contacto@gomotors.com",
+    "website": "https://www.gomotors.com.ec/",
+    "address": "Av. 8 de Diciembre",
+    "description": "Consesionario de GoMotors",
+    "workingHours": {
+      "monday": "08:00-18:00",
+      "tuesday": "08:00-18:00",
+      "wednesday": "08:00-18:00",
+      "thursday": "08:00-18:00",
+      "friday": "08:00-18:00",
+      "saturday": "08:00-16:00",
+      "sunday": "closed"
+    }
+  },
+  "api": {
+    "baseUrl": "https://api.ruedaya.com",
+    "dealerId": "68cdde3d2d98da1a287aecc7"
   },
   "theme": {
     "colors": {
-      "primary": "#CC0000",
-      "secondary": "#1a1a1a",
-      "accent": "#FFD700",
-      "success": "#10b981",
-      "warning": "#f59e0b",
-      "error": "#ef4444"
-    },
-    "typography": {
-      "fontSans": "Inter, system-ui, sans-serif",
-      "fontHeading": "Inter, system-ui, sans-serif",
-      "fontDisplay": "Inter, system-ui, sans-serif",
-      "fontMono": "Monaco, monospace"
+      "primary": "#5f6167"
     }
   },
   "images": {
-    "logo": "https://cdn.example.com/logo.png",
-    "favicon": "https://cdn.example.com/favicon.png",
-    "hero": "https://cdn.example.com/hero.jpg"
+    "logo": "https://res.cloudinary.com/dwjcqk3pc/image/upload/v1758731229/marcas/ejlrl0dpb6ahtfm98e4l.png",
+    "logoWhite": "https://res.cloudinary.com/dwjcqk3pc/image/upload/v1758731229/marcas/ejlrl0dpb6ahtfm98e4l.png",
+    "heroImage": "https://d1xp8ca6sx4zk2.cloudfront.net/wp-content/uploads/2023/05/24094455/modelos-thmbs-gs8-1-1.png",
+    "heroBackground": "https://scontent.floh1-1.fna.fbcdn.net/v/t39.30808-6/487512211_1101902098620965_4785809708566917655_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFKuwrWLKGePW3dYfHj5r7hCOuhHBph-oUI66EcGmH6hcBJ8qouTldE81nETdi-jCy5z9YvzwTJOzjrLQx5Y6AT&_nc_ohc=88zK1ef6tfkQ7kNvwFQqZbE&_nc_oc=AdnAhhV7RnWInZaLHjadxbaEsIlBC8XOtd2IOxzL3LyHn5fAyEw3Tp0bIqIRURjw1fOrgLqzZLbuyeb6HBLAIWBO&_nc_zt=23&_nc_ht=scontent.floh1-1.fna&_nc_gid=Z0f9fZCBwZ0F9p9QzmRIUQ&oh=00_AfbkEipAlSC9DO4eIXLWmI3oJJjK0mY-zeOCC0d3OnVYiA&oe=68E3AAC1"
   },
   "content": {
-    "siteName": "Example Dealer",
-    "siteDescription": "Encuentra los mejores vehículos en Ecuador",
+    "siteName": "GoMotors",
+    "tagline": "Distribuimos vehículos de las mejores marcas: Great Wall, SWM, Haval, DFSK, Soueast, KYC y más. Además contamos con talleres autorizados y repuestos genuinos",
     "hero": {
-      "title": "Bienvenido a Example Dealer",
-      "subtitle": "Tu concesionario de confianza",
-      "description": "Encuentra los mejores vehículos en Ecuador",
-      "ctaPrimary": "Ver Inventario",
-      "ctaSecondary": "Contáctanos"
+      "title": "Bienvenido a GoMotors",
+      "subtitle": "Descubre la mejor selección de vehículos",
+      "description": "Distribuimos vehículos de las mejores marcas: Great Wall, SWM, Haval, DFSK, Soueast, KYC y más. Además contamos con talleres autorizados y repuestos genuinos"
     }
   },
+  "layout": {},
   "social": {
-    "facebook": "",
-    "instagram": "",
-    "whatsapp": ""
+    "facebook": "https://www.facebook.com/IOmotorsGreatWall?locale=es_LA",
+    "instagram": ""
+  },
+  "seo": {
+    "title": "GoMotors - Great Wall en Loja",
+    "description": "Consesionario de GoMotors",
+    "keywords": "Great Wall, SWM, Haval, DFSK, KYC, vehículos, Loja, concesionario, GoMotors"
   }
 }
