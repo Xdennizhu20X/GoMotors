@@ -90,12 +90,24 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
 
         // INSTANT LOAD: Use cached theme first (no API delay)
         if (cachedTheme && cachedTheme.dealer) {
-          const dealerData = cachedTheme.dealer;
+          const dealerData = cachedTheme.dealer as any;
           const config = cachedTheme;
 
           // Merge dealer data with configuration
-          const completeDealer = {
+          const completeDealer: DealerConfig = {
             ...dealerData,
+            id: dealerData._id || dealerData.id || dealerId,
+            slug: dealerData.slug || dealerId,
+            name: dealerData.name,
+            displayName: dealerData.displayName || dealerData.name,
+            logo: dealerData.logoUrl || dealerData.logo || '',
+            description: dealerData.description || '',
+            location: dealerData.location || '',
+            phone: dealerData.phone || '',
+            email: dealerData.email || '',
+            isActive: dealerData.isActive ?? dealerData.active ?? true,
+            createdAt: dealerData.createdAt || new Date().toISOString(),
+            updatedAt: dealerData.updatedAt || new Date().toISOString(),
             configuration: {
               theme: config.theme,
               images: config.images,
@@ -127,12 +139,24 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
           try {
             const response = await apiClient.getCompleteDealerConfiguration(dealerId);
             if (response.success && response.data) {
-              const dealerData = response.data.dealer || response.data;
+              const dealerData = (response.data.dealer || response.data) as any;
               const config = response.data;
 
               // Merge dealer data with configuration
-              const completeDealer = {
+              const completeDealer: DealerConfig = {
                 ...dealerData,
+                id: dealerData._id || dealerData.id || dealerId,
+                slug: dealerData.slug || dealerId,
+                name: dealerData.name,
+                displayName: dealerData.displayName || dealerData.name,
+                logo: dealerData.logoUrl || dealerData.logo || '',
+                description: dealerData.description || '',
+                location: dealerData.location || '',
+                phone: dealerData.phone || '',
+                email: dealerData.email || '',
+                isActive: dealerData.isActive ?? dealerData.active ?? true,
+                createdAt: dealerData.createdAt || new Date().toISOString(),
+                updatedAt: dealerData.updatedAt || new Date().toISOString(),
                 configuration: {
                   theme: config.theme,
                   images: config.images,
@@ -193,11 +217,23 @@ export function DealerProvider({ children, initialIsDealer = false, initialSlug 
       try {
         const response = await apiClient.getCompleteDealerConfiguration(dealerId);
         if (response.success && response.data) {
-          const dealerData = response.data.dealer || response.data;
+          const dealerData = (response.data.dealer || response.data) as any;
           const config = response.data;
 
-          const completeDealer = {
+          const completeDealer: DealerConfig = {
             ...dealerData,
+            id: dealerData._id || dealerData.id || dealerId,
+            slug: dealerData.slug || dealerId,
+            name: dealerData.name,
+            displayName: dealerData.displayName || dealerData.name,
+            logo: dealerData.logoUrl || dealerData.logo || '',
+            description: dealerData.description || '',
+            location: dealerData.location || '',
+            phone: dealerData.phone || '',
+            email: dealerData.email || '',
+            isActive: dealerData.isActive ?? dealerData.active ?? true,
+            createdAt: dealerData.createdAt || new Date().toISOString(),
+            updatedAt: dealerData.updatedAt || new Date().toISOString(),
             configuration: {
               theme: config.theme,
               images: config.images,
