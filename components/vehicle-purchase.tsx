@@ -156,7 +156,7 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
     { key: 'pichincha', label: 'Banco Pichincha' },
     { key: 'pacifico', label: 'Banco del Pacífico' },
     { key: 'guayaquil', label: 'Banco de Guayaquil' },
-    { key: 'produbanco', label: 'Produbanco' }
+    { key: 'loja', label: 'Banco de Loja' }
   ]
 
   const formatPrice = (price: number) => {

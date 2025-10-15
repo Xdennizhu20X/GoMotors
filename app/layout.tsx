@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     "carros nuevos",
     "Quito",
     "Guayaquil",
-    "Cuenca"
+    "Cuenca",
+    "Loja"
   ],
   authors: [{ name: "GoMotors" }],
   creator: "GoMotors",

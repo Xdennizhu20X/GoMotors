@@ -69,8 +69,7 @@ function ProfilePageContent() {
   })
 
   const cities = [
-    'Quito', 'Guayaquil', 'Cuenca', 'Santo Domingo',
-    'Machala', 'Manta', 'Portoviejo', 'Ambato'
+    'Quito', 'Guayaquil', 'Cuenca', 'Loja'
   ]
 
   useEffect(() => {
