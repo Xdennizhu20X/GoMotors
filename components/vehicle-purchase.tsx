@@ -735,7 +735,16 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
       </div>
 
       {/* Modal de formulario de pago */}
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl">
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        size="2xl"
+        scrollBehavior="inside"
+        classNames={{
+          base: "max-h-[90vh]",
+          body: "overflow-y-auto"
+        }}
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -745,7 +754,7 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
                   {vehicle.brand} {vehicle.model} - Color: {selectedColor}
                 </p>
               </ModalHeader>
-              <ModalBody>
+              <ModalBody className="py-4">
                 {/* Error de compra */}
                 {purchaseError && (
                   <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-4">
