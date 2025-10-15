@@ -241,6 +241,7 @@ const FinanciamientoPage = () => {
                       onSelectionChange={(keys) => setSelectedEntity(Array.from(keys)[0] as string)}
                       size="md"
                       placeholder="Selecciona una entidad"
+                      color='primary'
                     >
                       {financialEntities.map((entity) => (
                         <SelectItem key={entity.id}>
