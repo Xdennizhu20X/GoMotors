@@ -13,6 +13,7 @@ import {
   trackFinancingInteraction,
   trackUserEngagement
 } from '@/lib/analytics'
+import { FinancingModalMultiStep } from './financing-modal-multi-step'
 
 interface VehiclePurchaseProps {
   vehicle: Vehicle
@@ -51,6 +52,7 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
   const [loanTerms, setLoanTerms] = useState(36)
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { isOpen: isFinancingModalOpen, onOpen: onFinancingModalOpen, onOpenChange: onFinancingModalChange } = useDisclosure()
   const { isOpen: isAuthModalOpen, onOpen: onAuthModalOpen, onOpenChange: onAuthModalChange } = useDisclosure()
   const { isOpen: isSuccessModalOpen, onOpen: onSuccessModalOpen, onOpenChange: onSuccessModalChange } = useDisclosure()
 
@@ -228,8 +230,12 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
     console.log('User authenticated, creating purchase first...');
     try {
       await createPurchase()
-      // Si llegamos aquí sin error, abrir el modal
-      onOpen()
+      // Si llegamos aquí sin error, abrir el modal correspondiente
+      if (paymentMethod === 'financing') {
+        onFinancingModalOpen()
+      } else {
+        onOpen()
+      }
     } catch (error) {
       console.error('Failed to create purchase:', error)
       // El error ya está manejado en createPurchase mediante setPurchaseError
@@ -538,6 +544,97 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
     }
   }
 
+  const processFinancing = async (financingData: any) => {
+    setIsProcessingPayment(true)
+    setPurchaseError(null)
+
+    try {
+      const purchaseId = currentPurchaseId;
+      if (!purchaseId) {
+        throw new Error('Error: No se encontró ID de compra. Por favor, intenta nuevamente.')
+      }
+
+      // Preparar datos de billing con toda la información de financiamiento
+      const billingData = {
+        firstName: financingData.firstName,
+        lastName: financingData.lastName,
+        email: financingData.email,
+        phone: financingData.phone,
+        postalCode: financingData.postalCode,
+        paymentType: 'bank_transfer' as const,
+        financingApplication: {
+          employmentStatus: financingData.employmentStatus,
+          employerName: financingData.employerName,
+          occupation: financingData.occupation,
+          timeInCurrentJob: parseInt(financingData.timeInCurrentJob) || 0,
+          monthlyIncome: parseFloat(financingData.monthlyIncome) || 0,
+          additionalIncome: parseFloat(financingData.additionalIncome) || 0,
+          additionalIncomeSource: financingData.additionalIncomeSource,
+          housingType: financingData.housingType,
+          monthlyHousingCost: parseFloat(financingData.monthlyHousingCost) || 0,
+          hasActiveDebts: financingData.hasActiveDebts,
+          totalMonthlyDebts: parseFloat(financingData.totalMonthlyDebts) || 0,
+          bankName: financingData.bankName,
+          accountType: financingData.accountType,
+          timeAsCustomer: parseInt(financingData.timeAsCustomer) || 0,
+          personalReferences: financingData.personalReferences,
+          identificationNumber: financingData.identificationNumber,
+          maritalStatus: financingData.maritalStatus,
+          numberOfDependents: parseInt(financingData.numberOfDependents) || 0,
+          hasCurrentVehicle: financingData.hasCurrentVehicle,
+          currentVehicleDetails: financingData.currentVehicleDetails,
+          hasPreviousVehicleFinancing: financingData.hasPreviousVehicleFinancing,
+          vehiclePurpose: financingData.vehiclePurpose,
+          authorizeCreditCheck: financingData.authorizeCreditCheck,
+          authorizeInformationVerification: financingData.authorizeInformationVerification,
+          acceptTermsAndConditions: financingData.acceptTermsAndConditions
+        },
+        savePaymentInfo: true,
+        receiveNotifications: true
+      }
+
+      console.log('Processing financing with data:', billingData)
+
+      const response = await apiClient.processBilling(purchaseId, billingData)
+
+      if (response.success && response.data) {
+        setConfirmationData(response.data)
+
+        // Track successful financing
+        trackPurchase({
+          transaction_id: response.data.transactionId || purchaseId,
+          value: vehicle.price,
+          currency: 'USD',
+          items: [{
+            item_id: vehicle.id || (vehicle as any)._id,
+            item_name: `${vehicle.brand} ${vehicle.model} ${vehicle.year}`,
+            item_category: 'vehicle',
+            item_brand: vehicle.brand,
+            price: vehicle.price,
+            quantity: 1,
+          }],
+          payment_method: 'financing',
+          dealer_id: (vehicle as any).dealer?._id || (vehicle as any).dealer || (vehicle as any).dealerId,
+          dealer_name: (vehicle as any).dealer?.name || (vehicle as any).dealerName,
+        });
+
+        onFinancingModalChange() // Cerrar modal de financiamiento
+        onSuccessModalOpen() // Abrir modal de éxito
+        console.log('Financing processed successfully:', response.data)
+      } else {
+        throw new Error('Error al procesar la solicitud de financiamiento')
+      }
+    } catch (error: any) {
+      console.error('Error processing financing:', error)
+      setPurchaseError(
+        error?.error?.message ||
+        'Error al procesar la solicitud. Por favor intenta nuevamente.'
+      )
+    } finally {
+      setIsProcessingPayment(false)
+    }
+  }
+
   return (
     <div className="space-y-6">
       {/* Selector de color */}
@@ -562,6 +659,11 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
             />
             <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-medium">
               {selectedColorObj.name}
+            </div>
+
+            {/* AI disclaimer para imágenes de colores */}
+            <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white/80 px-2 py-1 rounded text-xs max-w-[180px] text-right">
+              Generadas con IA y son parecidas pero no como lo original
             </div>
           </motion.div>
         )}
@@ -1106,6 +1208,23 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
           )}
         </ModalContent>
       </Modal>
+
+      {/* Modal de financiamiento multi-paso */}
+      <FinancingModalMultiStep
+        isOpen={isFinancingModalOpen}
+        onOpenChange={onFinancingModalChange}
+        vehicleData={{
+          brand: vehicle.brand,
+          model: vehicle.model,
+          year: vehicle.year,
+          price: vehicle.price,
+          color: selectedColor,
+          imageUrl: selectedColorObj?.image || (vehicle as any).images?.[0] || '/placeholder-car.jpg'
+        }}
+        onConfirm={processFinancing}
+        isProcessing={isProcessingPayment}
+        error={purchaseError}
+      />
     </div>
   )
 }

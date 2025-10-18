@@ -229,6 +229,9 @@ export default function VehicleDetailPage({ params }: VehicleDetailPageProps) {
 
   const vehicleImages = buildVehicle3DImages(vehicle)
 
+  // Verificar si las imágenes son generadas con IA (si vienen de images3D)
+  const hasAIGeneratedImages = vehicle.images3D && Object.keys(vehicle.images3D).length > 0
+
   // Debug: mostrar imágenes 3D cargadas
   console.log('Vehicle 3D images loaded for carousel:', vehicleImages)
 
@@ -258,6 +261,7 @@ export default function VehicleDetailPage({ params }: VehicleDetailPageProps) {
             <VehicleImageCarousel
               images={vehicleImages}
               vehicleName={`${vehicle.brand} ${vehicle.model}`}
+              isAIGenerated={hasAIGeneratedImages}
             />
           </div>
         </div>

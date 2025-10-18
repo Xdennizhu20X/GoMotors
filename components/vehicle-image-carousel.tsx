@@ -14,9 +14,10 @@ interface VehicleImage {
 interface VehicleImageCarouselProps {
   images: VehicleImage[]
   vehicleName: string
+  isAIGenerated?: boolean
 }
 
-export const VehicleImageCarousel = ({ images, vehicleName }: VehicleImageCarouselProps) => {
+export const VehicleImageCarousel = ({ images, vehicleName, isAIGenerated = false }: VehicleImageCarouselProps) => {
   const [currentImage, setCurrentImage] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -100,6 +101,13 @@ export const VehicleImageCarousel = ({ images, vehicleName }: VehicleImageCarous
           <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium z-10">
             {images[currentImage].label}
           </div>
+
+          {/* AI disclaimer */}
+          {isAIGenerated && (
+            <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white/80 px-3 py-1 rounded text-xs z-10 max-w-[calc(100%-8rem)]">
+              Generadas con IA y son parecidas pero no como lo original
+            </div>
+          )}
 
           {/* Controles del carrusel */}
           <div className="absolute inset-x-4 top-1/2 transform -translate-y-1/2 flex justify-between pointer-events-none z-10">
@@ -211,6 +219,13 @@ export const VehicleImageCarousel = ({ images, vehicleName }: VehicleImageCarous
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </Button>
+
+              {/* AI disclaimer en fullscreen */}
+              {isAIGenerated && (
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white/80 px-4 py-2 rounded text-sm z-10">
+                  Generadas con IA y son parecidas pero no como lo original
+                </div>
+              )}
 
               {/* Controles en pantalla completa */}
               <div className="absolute inset-x-4 top-1/2 transform -translate-y-1/2 flex justify-between">
