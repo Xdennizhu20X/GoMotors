@@ -45,6 +45,9 @@ interface Purchase {
     monthlyPayment: number
     interestRate: number
   }
+  financingApprovalStatus?: 'pending' | 'approved' | 'rejected'
+  financingApprovalDate?: string
+  financingRejectionReason?: string
 }
 
 function ProfilePageContent() {
@@ -562,9 +565,30 @@ function ProfilePageContent() {
 
                             {purchase.financingDetails && (
                               <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                                <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-200 mb-2">
-                                  Detalles del Financiamiento
-                                </h4>
+                                <div className="flex items-center justify-between mb-2">
+                                  <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-200">
+                                    Detalles del Financiamiento
+                                  </h4>
+                                  {purchase.financingApprovalStatus && (
+                                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                                      purchase.financingApprovalStatus === 'approved' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                                      purchase.financingApprovalStatus === 'rejected' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                                      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                                    }`}>
+                                      {purchase.financingApprovalStatus === 'approved' ? '✓ Aprobado' :
+                                       purchase.financingApprovalStatus === 'rejected' ? '✗ Rechazado' : '⏳ Pendiente Aprobación'}
+                                    </span>
+                                  )}
+                                </div>
+
+                                {purchase.financingRejectionReason && purchase.financingApprovalStatus === 'rejected' && (
+                                  <div className="mb-3 p-2 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded text-xs">
+                                    <p className="text-red-900 dark:text-red-200">
+                                      <strong>Razón del rechazo:</strong> {purchase.financingRejectionReason}
+                                    </p>
+                                  </div>
+                                )}
+
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                                   <div>
                                     <p className="text-blue-700 dark:text-blue-300">Cuota inicial</p>

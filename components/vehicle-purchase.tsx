@@ -554,6 +554,12 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
         throw new Error('Error: No se encontró ID de compra. Por favor, intenta nuevamente.')
       }
 
+      const accountTypeMapping: { [key: string]: string } = {
+        ahorros: 'savings',
+        corriente: 'checking',
+        ninguna: 'none'
+      }
+
       // Preparar datos de billing con toda la información de financiamiento
       const billingData = {
         firstName: financingData.firstName,
@@ -562,6 +568,10 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
         phone: financingData.phone,
         postalCode: financingData.postalCode,
         paymentType: 'bank_transfer' as const,
+        bankDetails: {
+          selectedBank: financingData.bankName,
+          accountType: accountTypeMapping[financingData.accountType] || financingData.accountType
+        },
         financingApplication: {
           employmentStatus: financingData.employmentStatus,
           employerName: financingData.employerName,
@@ -574,8 +584,6 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
           monthlyHousingCost: parseFloat(financingData.monthlyHousingCost) || 0,
           hasActiveDebts: financingData.hasActiveDebts,
           totalMonthlyDebts: parseFloat(financingData.totalMonthlyDebts) || 0,
-          bankName: financingData.bankName,
-          accountType: financingData.accountType,
           timeAsCustomer: parseInt(financingData.timeAsCustomer) || 0,
           personalReferences: financingData.personalReferences,
           identificationNumber: financingData.identificationNumber,
