@@ -308,6 +308,85 @@ export const VehicleInfo = ({ vehicle }: VehicleInfoProps) => {
           )}
         </div>
       </motion.div>
+
+      {/* Ficha del vehículo (si está disponible) */}
+      {(vehicle as any).vehicleSheet && (
+        <>
+          <Divider />
+          <motion.div variants={itemVariants}>
+            <a
+              href={(vehicle as any).vehicleSheet}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full"
+            >
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#1341ee]/10 to-[#1341ee]/5 dark:from-[#1341ee]/20 dark:to-[#1341ee]/10 rounded-lg border-2 border-[#1341ee]/30 hover:border-[#1341ee] transition-all group cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-[#1341ee] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-[#1341ee] transition-colors">
+                      Ver Ficha del Vehículo
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Descarga la información técnica completa
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-[#1341ee]">
+                  <span className="text-sm font-medium hidden sm:inline">Abrir</span>
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </motion.div>
+        </>
+      )}
+
+      {/* Showroom del vehículo (si está disponible) */}
+      {(vehicle as any).showroomLink && (
+        <>
+          <Divider />
+          <motion.div variants={itemVariants}>
+            <a
+              href={(vehicle as any).showroomLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full"
+            >
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-500/10 to-purple-500/5 dark:from-purple-500/20 dark:to-purple-500/10 rounded-lg border-2 border-purple-500/30 hover:border-purple-500 transition-all group cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">
+                      Ver en Showroom Virtual
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Explora el vehículo en 360° y realidad aumentada
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-purple-600">
+                  <span className="text-sm font-medium hidden sm:inline">Explorar</span>
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </motion.div>
+        </>
+      )}
     </motion.div>
   )
 }

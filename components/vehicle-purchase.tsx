@@ -134,10 +134,11 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
           name: apiColor.name,
           value: apiColor.value || apiColor.name,
           color: apiColor.hexCode || apiColor.hex || getColorHex(apiColor.name),
-          available: apiColor.available
+          available: apiColor.available,
+          image: apiColor.image // Imagen del vehículo en este color
         }))
     }
-    
+
     // Si NO hay colores del backend, mostrar solo el color actual del vehículo
     console.log('No backend colors found, using vehicle color:', vehicle.color)
     const currentColor = vehicle.color || 'Blanco'
@@ -149,8 +150,13 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
       }
     ]
   }
-  
+
   const availableColors = getAvailableColors()
+
+  // Obtener el color seleccionado completo
+  const selectedColorObj = availableColors.find((c: any) =>
+    c.name === selectedColor || c.value === selectedColor
+  )
 
   const banks = [
     { key: 'pichincha', label: 'Banco Pichincha' },
@@ -539,6 +545,27 @@ export const VehiclePurchase = ({ vehicle, selectedColor, onColorChange }: Vehic
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
           Selecciona el color
         </h3>
+
+        {/* Imagen del color seleccionado */}
+        {selectedColorObj?.image && (
+          <motion.div
+            key={selectedColor}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border-2 border-[#1341ee] shadow-lg"
+          >
+            <img
+              src={selectedColorObj.image}
+              alt={`${vehicle.brand} ${vehicle.model} - ${selectedColorObj.name}`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-medium">
+              {selectedColorObj.name}
+            </div>
+          </motion.div>
+        )}
+
         <div className="flex flex-wrap gap-3">
           {availableColors.map((color: any) => {
             const isAvailable = color.available !== false // Si no tiene el campo, asumimos disponible

@@ -1,3 +1,11 @@
+export interface VehicleColor {
+  name: string;           // Nombre del color (ej: "Blanco Perla")
+  value: string;          // Valor slug (ej: "blanco-perla")
+  hexCode?: string;       // Código hex del color (ej: "#F8F8FF")
+  available?: boolean;    // Si el color está disponible
+  image?: string;         // Imagen del vehículo en este color específico (opcional)
+}
+
 export interface Vehicle {
   id: string;
   brand: string;
@@ -18,6 +26,15 @@ export interface Vehicle {
   dealerId?: string;
   dealerName?: string;
   dealerLocation?: string;
+  vehicleSheet?: string; // URL de la ficha del vehículo (opcional, desde Cloudinary)
+  availableColors?: VehicleColor[]; // Colores disponibles con sus imágenes
+  images3D?: {            // Imágenes 3D del vehículo (independientes de los colores)
+    general?: string;
+    front?: string;
+    side?: string;
+    back?: string;
+    top?: string;
+  };
 }
 
 export const vehicles: Vehicle[] = [
@@ -45,19 +62,22 @@ export const vehicles: Vehicle[] = [
         name: 'Blanco Perla',
         value: 'blanco-perla',
         hexCode: '#F8F8FF',
-        available: true
+        available: true,
+        image: 'https://cdn.ruedaya.com/vehicles/toyota-corolla-2023-blanco.jpg' // Ejemplo de URL de Cloudinary
       },
       {
         name: 'Negro Metálico',
         value: 'negro-metalico',
         hexCode: '#1C1C1E',
-        available: true
+        available: true,
+        image: 'https://cdn.ruedaya.com/vehicles/toyota-corolla-2023-negro.jpg'
       },
       {
         name: 'Gris Oxford',
         value: 'gris-oxford',
         hexCode: '#8B8680',
-        available: true
+        available: true,
+        image: 'https://cdn.ruedaya.com/vehicles/toyota-corolla-2023-gris.jpg'
       }
     ]
   } as any,

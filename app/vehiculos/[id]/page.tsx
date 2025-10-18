@@ -192,7 +192,7 @@ export default function VehicleDetailPage({ params }: VehicleDetailPageProps) {
     )
   }
 
-  // Construir array de imágenes 3D del vehículo (solo 5 vistas)
+  // Construir array de imágenes 3D del vehículo (independientes del color)
   const buildVehicle3DImages = (vehicle: any) => {
     const images3D: { src: string; label: string }[] = []
 
@@ -255,8 +255,8 @@ export default function VehicleDetailPage({ params }: VehicleDetailPageProps) {
         {/* Carrusel de imágenes - 70% - Fixed */}
         <div className="w-[70%] h-full flex items-center justify-center p-8">
           <div className="w-full max-w-4xl">
-            <VehicleImageCarousel 
-              images={vehicleImages} 
+            <VehicleImageCarousel
+              images={vehicleImages}
               vehicleName={`${vehicle.brand} ${vehicle.model}`}
             />
           </div>
